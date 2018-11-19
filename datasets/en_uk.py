@@ -58,7 +58,7 @@ def get_test_data(sentences, max_n):
 
 
 class EnUK(Dataset):
-    def __init__(self, keys, dir_name):
+    def __init__(self, keys):
         dir_name = os.path.join(lang, 'by_book', speaker)
 
         self.keys = keys
