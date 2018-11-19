@@ -62,7 +62,7 @@ class EnUK(Dataset):
         dir_name = os.path.join(lang, 'by_book', speaker)
 
         self.keys = keys
-        self.path = os.path.join(os.path.dirname(os.path.realpath(__file__)), dir_name)
+        self.path = os.path.join(dir_name)
         self.fnames, self.text_lengths, self.texts = read_metadata(os.path.join(self.path))
 
     def slice(self, start, end):
