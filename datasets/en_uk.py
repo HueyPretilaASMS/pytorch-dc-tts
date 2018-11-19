@@ -36,7 +36,7 @@ def read_metadata(base_path):
             if i <= 3000:
                 fname, _, text = line.strip().split("|")
 
-                if os.path.isfile(base_path, book, fname):
+                if os.path.isfile(os.path.join(base_path, book, fname)):
                     fnames.append(fname)
 
                     text = text_normalize(text) + "E"  # E: EOS
