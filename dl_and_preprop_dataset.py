@@ -24,7 +24,7 @@ from datasets.en_uk import EnUK
 from datasets.ru_ru import RuRU
 
 parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-parser.add_argument("--dataset", required=True, choices=['ljspeech', 'mbspeech'], help='dataset name')
+parser.add_argument("--dataset", required=True, choices=['ljspeech', 'mbspeech', 'en_uk', 'ru_ru'], help='dataset name')
 args = parser.parse_args()
 
 if args.dataset == 'ljspeech':
