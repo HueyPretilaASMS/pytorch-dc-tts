@@ -6,6 +6,7 @@ import sys
 import time
 import argparse
 from tqdm import *
+from logger import Logger
 
 import torch
 import torch.nn.functional as F
@@ -13,7 +14,6 @@ import torch.nn.functional as F
 # project imports
 from models import SSRN
 from hparams import HParams as hp
-from logger import Logger
 from utils import get_last_checkpoint_file_name, load_checkpoint, save_checkpoint
 from datasets.data_loader import SSRNDataLoader
 
