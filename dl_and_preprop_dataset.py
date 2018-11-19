@@ -20,6 +20,8 @@ from audio import preprocess
 from utils import download_file
 from datasets.mb_speech import MBSpeech
 from datasets.lj_speech import LJSpeech
+from datasets.en_uk import EnUK
+from datasets.ru_ru import RuRU
 
 parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 parser.add_argument("--dataset", required=True, choices=['ljspeech', 'mbspeech'], help='dataset name')
@@ -48,6 +50,52 @@ if args.dataset == 'ljspeech':
         print("pre processing...")
         lj_speech = LJSpeech([])
         preprocess(dataset_path, lj_speech)
+elif args.dataset == 'en_uk':
+    dataset_file_name = 'en_UK.tgz'
+    datasets_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), '')
+    dataset_path = os.path.join(datasets_path, 'en_UK')
+
+    if os.path.isdir(dataset_path) and False:
+        print("en_UK dataset folder already exists")
+        sys.exit(0)
+    else:
+        dataset_file_path = os.path.join(datasets_path, dataset_file_name)
+        if not os.path.isfile(dataset_file_path):
+            url = "http://data.m-ailabs.bayern/data/Training/stt_tts/%s" % dataset_file_name
+            download_file(url, dataset_file_path)
+        else:
+            print("'%s' already exists" % dataset_file_name)
+
+        print("extracting '%s'..." % dataset_file_name)
+        os.system('cd %s; tar xvjf %s' % (datasets_path, dataset_file_name))
+
+        # pre process
+        print("pre processing...")
+        en_UK = EnUK([])
+        preprocess(dataset_path, en_UK)
+elif args.dataset == 'ru_ru':
+    dataset_file_name = 'ru_RU.tgz'
+    datasets_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), '')
+    dataset_path = os.path.join(datasets_path, 'ru_RU')
+
+    if os.path.isdir(dataset_path) and False:
+        print("ru_RU dataset folder already exists")
+        sys.exit(0)
+    else:
+        dataset_file_path = os.path.join(datasets_path, dataset_file_name)
+        if not os.path.isfile(dataset_file_path):
+            url = "http://data.m-ailabs.bayern/data/Training/stt_tts/%s" % dataset_file_name
+            download_file(url, dataset_file_path)
+        else:
+            print("'%s' already exists" % dataset_file_name)
+
+        print("extracting '%s'..." % dataset_file_name)
+        os.system('cd %s; tar xvjf %s' % (datasets_path, dataset_file_name))
+
+        # pre process
+        print("pre processing...")
+        ru_RU = RuRU([])
+        preprocess(dataset_path, ru_RU)
 elif args.dataset == 'mbspeech':
     dataset_name = 'MBSpeech-1.0'
     datasets_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'datasets')
