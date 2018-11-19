@@ -116,8 +116,8 @@ def train(train_epoch, phase='train'):
             })
             logger.log_step(phase, global_step, {'loss_l1': l1_loss},
                             {'mags-true': M[0, :, :], 'mags-pred': Z[0, :, :], 'mels': S[0, :, :]})
-            if global_step % 5000 == 0:
-                # checkpoint at every 5000th step
+            if global_step % 1000 == 0:
+                # checkpoint at every 1000th step
                 save_checkpoint(logger.logdir, train_epoch, global_step, ssrn, optimizer)
 
     epoch_loss = running_loss / it
