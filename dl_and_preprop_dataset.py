@@ -67,7 +67,7 @@ elif args.dataset == 'en_uk':
             print("'%s' already exists" % dataset_file_name)
 
         print("extracting '%s'..." % dataset_file_name)
-        os.system('cd %s; tar xvjf %s' % (datasets_path, dataset_file_name))
+        os.system('cd %s; tar xvzf %s' % (datasets_path, dataset_file_name))
 
         # pre process
         print("pre processing...")
@@ -90,7 +90,7 @@ elif args.dataset == 'ru_ru':
             print("'%s' already exists" % dataset_file_name)
 
         print("extracting '%s'..." % dataset_file_name)
-        os.system('cd %s; tar xvjf %s' % (datasets_path, dataset_file_name))
+        os.system('cd %s; tar xvzf %s' % (datasets_path, dataset_file_name))
 
         # pre process
         print("pre processing...")
